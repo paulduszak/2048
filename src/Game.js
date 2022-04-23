@@ -1,10 +1,11 @@
 import PlayGame from './PlayGame'
 import BootGame from './BootGame'
+import _ from './Constants'
 
 const config = {
-  width: 480,
-  height: 640,
-  backgroundColor: 0xff0000,
+  width: _.boardSize.cols * (_.tileSize + _.tileSpacing) + _.tileSpacing,
+  height: _.boardSize.rows * (_.tileSize + _.tileSpacing) + _.tileSpacing,
+  backgroundColor: 0xecf0f1,
   scene: [BootGame, PlayGame],
 }
 
