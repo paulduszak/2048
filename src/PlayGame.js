@@ -1,5 +1,6 @@
-import { Scene, Tilemaps } from 'phaser'
+import { Scene } from 'phaser'
 import _ from './Constants'
+import Tile from './sprites/Tile'
 
 export default class PlayGame extends Scene {
   constructor() {
@@ -13,16 +14,20 @@ export default class PlayGame extends Scene {
     for (let row = 0; row < _.boardSize.rows; row++) {
       this.boardState[row] = []
       for (let col = 0; col < _.boardSize.cols; col++) {
-        this.boardState[row][col] = new Tile(0, getTilePosition(row, col))
-        this.add.image(tilePosition.x, tilePosition.y, 'empty_tile')
+        this.boardState[row][col] = new Tile({
+          scene: this,
+          row,
+          col,
+        })
       }
     }
   }
 
-  getTilePosition(row, col) {
-    const x = _.tileSpacing * (col + 1) + _.tileSize * (col + 0.5)
-    const y = _.tileSpacing * (row + 1) + _.tileSize * (row + 0.5)
-
-    return new Phaser.Geom.Point(x, y)
+  update() {
+    for (let row = 0; row < _.boardSize.rows; row++) {
+      for (let col = 0; col < _.boardSize.cols; col++) {
+        this.boardState[row][col].update()
+      }
+    }
   }
 }

@@ -1,3 +1,5 @@
+import { Game } from 'phaser'
+
 import PlayGame from './PlayGame'
 import BootGame from './BootGame'
 import _ from './Constants'
@@ -12,7 +14,7 @@ const config = {
 let game
 
 window.onload = () => {
-  game = new Phaser.Game(config)
+  game = new Game(config)
   window.focus()
   resizeGame()
   window.addEventListener('resize', resizeGame)
