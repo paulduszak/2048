@@ -38,6 +38,8 @@ export default class Tile extends GameObjects.Sprite {
     if (this.power < Tile.powers.length) {
       this.power = this.power + 1
       this.text.setText(Tile.powers[this.power])
+      //this.setFrame(this.power)
+      // tween here?
     }
   }
 }
