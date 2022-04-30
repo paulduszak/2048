@@ -1,4 +1,5 @@
 import { Scene } from 'phaser'
+import _ from './Constants'
 
 export default class BootGame extends Scene {
   constructor() {
@@ -6,7 +7,10 @@ export default class BootGame extends Scene {
   }
 
   preload() {
-    this.load.image('empty_tile', 'assets/sprites/empty_tile.png')
+    this.load.spritesheet('tiles', 'assets/sprites/tiles.png', {
+      frameWidth: _.tileSize,
+      frameHeight: _.tileSize
+    })
   }
 
   create() {
