@@ -3,7 +3,9 @@ import _ from '../Constants'
 
 export default class Tile extends GameObjects.Sprite {
   static spriteName = 'tiles'
-  
+  static powers = [0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
+  power = 0
+
   static textStyle = {
     font: '32px Arial',
     fill: '#000000',
@@ -21,7 +23,7 @@ export default class Tile extends GameObjects.Sprite {
     scene.add.existing(this)
     this.scene = scene
     this.text = scene.add.existing(
-      new GameObjects.Text(scene, x, y, _.tileSize, Tile.textStyle),
+      new GameObjects.Text(scene, x, y, '', Tile.textStyle),
     )
   }
 
@@ -30,5 +32,12 @@ export default class Tile extends GameObjects.Sprite {
     //console.log(this.x, this.width, this.text.width)
     this.text.x = Math.floor(this.x - this.text.width / 2)
     this.text.y = Math.floor(this.y - this.text.height / 2)
+  }
+
+  increment() {
+    if (this.power < Tile.powers.length) {
+      this.power = this.power + 1
+      this.text.setText(Tile.powers[this.power])
+    }
   }
 }
