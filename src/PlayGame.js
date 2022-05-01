@@ -1,6 +1,9 @@
 import { Scene } from 'phaser'
 import Board from './objects/Board'
 
+import KeyboardInput from './inputs/Keyboard'
+import TouchInput from './inputs/Touch'
+
 export default class PlayGame extends Scene {
   constructor() {
     super('PlayGame')
@@ -13,6 +16,9 @@ export default class PlayGame extends Scene {
 
     this.board.addTile()
     this.board.addTile()
+
+    new KeyboardInput(this, this.board)
+    new TouchInput(this, this.board)
   }
 
   update() {

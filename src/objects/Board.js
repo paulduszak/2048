@@ -43,4 +43,8 @@ export default class Board {
       this.boardState[tile.row][tile.col].increment()
     }
   }
+
+  shift(direction) {
+    console.log('Moved:', direction.value)
+  }
 }
