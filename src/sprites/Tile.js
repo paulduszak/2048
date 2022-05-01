@@ -25,13 +25,13 @@ export default class Tile extends GameObjects.Sprite {
     this.text = scene.add.existing(
       new GameObjects.Text(scene, x, y, '', Tile.textStyle),
     )
+    this.text.x = Math.floor(this.x - this.text.width / 2)
+    this.text.y = Math.floor(this.y - this.text.height / 2)
   }
 
   update() {
     // TODO: Onlty update this if the values actually changed
     //console.log(this.x, this.width, this.text.width)
-    this.text.x = Math.floor(this.x - this.text.width / 2)
-    this.text.y = Math.floor(this.y - this.text.height / 2)
   }
 
   increment() {

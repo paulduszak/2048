@@ -2,6 +2,7 @@ import { Utils } from 'phaser'
 
 import _ from '../Constants'
 import Tile from '../sprites/Tile'
+import Directions from '../enums/Directions'
 
 export default class Board {
   constructor(scene) {
@@ -19,11 +20,11 @@ export default class Board {
   }
 
   update() {
-    for (let row = 0; row < _.boardSize.rows; row++) {
-      for (let col = 0; col < _.boardSize.cols; col++) {
-        this.boardState[row][col].update()
-      }
-    }
+    // for (let row = 0; row < _.boardSize.rows; row++) {
+    //   for (let col = 0; col < _.boardSize.cols; col++) {
+    //     this.boardState[row][col].update()
+    //   }
+    // }
   }
 
   addTile() {
@@ -44,7 +45,32 @@ export default class Board {
     }
   }
 
-  shift(direction) {
-    console.log('Moved:', direction.value)
+  shift(d) {
+    const dRow =
+      d === Directions.LEFT || d === Directions.RIGHT
+        ? 0
+        : d === Directions.UP
+        ? -1
+        : 1
+    const dCol =
+      d === Directions.UP || d === Directions.DOWN
+        ? 0
+        : d === Directions.LEFT
+        ? -1
+        : 1
+
+    this.canMove = false
+
+    for (let row = 0; row < _.boardSize.rows; row++) {
+      for (let col = 0; col < _.boardSize.cols; col++) {
+        const currRow = dRow === 1 ? _.boardSize.rows - 1 - row : row
+        const currCol = dCol === 1 ? _.boardSize.cols - 1 - col : col
+        const tileValue = this.boardState[currRow][currCol].power
+
+        if (tileValue != 0) {
+          const newPos = Tile.get
+        }
+      }
+    }
   }
 }

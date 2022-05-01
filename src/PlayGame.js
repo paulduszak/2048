@@ -22,6 +22,6 @@ export default class PlayGame extends Scene {
   }
 
   update() {
-    this.board.update()
+    //this.board.update()
   }
 }
