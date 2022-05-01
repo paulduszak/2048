@@ -1,4 +1,4 @@
-import { Utils } from 'phaser'
+import { Tilemaps, Utils } from 'phaser'
 
 import _ from '../Constants'
 import Tile from '../sprites/Tile'
@@ -61,16 +61,26 @@ export default class Board {
 
     this.canMove = false
 
+    // Moving down 
+    // dRow = 1 
+    // dCol = 0
+
+    // Moving up 
+    // dRow = -1
+    // dCol = 0
+
+
     for (let row = 0; row < _.boardSize.rows; row++) {
       for (let col = 0; col < _.boardSize.cols; col++) {
-        const currRow = dRow === 1 ? _.boardSize.rows - 1 - row : row
-        const currCol = dCol === 1 ? _.boardSize.cols - 1 - col : col
-        const tileValue = this.boardState[currRow][currCol].power
+        const currRow = dRow === 1 ? (_.boardSize.rows - 1) - row : row
+        const currCol = dCol === 1 ? (_.boardSize.cols - 1) - col : col
+        const tile = this.boardState[currRow][currCol]
 
-        if (tileValue != 0) {
-          const newPos = Tile.get
+        if (tile.power != 0) {
+          tile.update(currRow + dRow, currCol + dCol)
         }
       }
     }
+
   }
 }

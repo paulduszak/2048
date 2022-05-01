@@ -29,9 +29,20 @@ export default class Tile extends GameObjects.Sprite {
     this.text.y = Math.floor(this.y - this.text.height / 2)
   }
 
-  update() {
-    // TODO: Onlty update this if the values actually changed
-    //console.log(this.x, this.width, this.text.width)
+  update(col, row) {
+    // bump the power by 1 (for now)
+    // update x, y of sprite and text
+    console.log('col:', col, 'row:', row)
+    console.log('current x pos:', this.x)
+    console.log('current y pos', this.y)
+    this.x = _.tileSpacing * (col + 1) + _.tileSize * (col + 0.5)
+    this.y = _.tileSpacing * (row + 1) + _.tileSize * (row + 0.5)
+    console.log('new x pos:', this.x)
+    console.log('new y pos', this.y)
+
+    this.text.x = Math.floor(this.x - this.text.width / 2)
+    this.text.y = Math.floor(this.y - this.text.height / 2)
+    this.increment()
   }
 
   increment() {

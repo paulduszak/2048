@@ -15,7 +15,7 @@ export default class PlayGame extends Scene {
     this.board = new Board(this)
 
     this.board.addTile()
-    this.board.addTile()
+    //this.board.addTile()
 
     new KeyboardInput(this, this.board)
     new TouchInput(this, this.board)
